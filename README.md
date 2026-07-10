@@ -21,8 +21,6 @@ Framework-agnostic custom element: use it from plain HTML, React, Vue, Svelte, o
 </script>
 ```
 
-Product notes: **[docs/PRD.md](./docs/PRD.md)**
-
 ---
 
 ## Features

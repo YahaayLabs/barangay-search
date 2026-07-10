@@ -58,6 +58,7 @@ app.innerHTML = `
           <barangay-search
             id="brgy"
             placeholder="e.g. Poblacion Batangas"
+            base-url="/gis-api/v1"
             ${apiKey ? `api-key="${escapeAttr(apiKey)}"` : ''}
           ></barangay-search>
         </label>
@@ -80,7 +81,8 @@ app.innerHTML = `
         </label>
         <p class="hint">
           Or set <code>VITE_GISPH_API_KEY</code> in <code>.env.local</code> and restart
-          <code>bun dev</code> / <code>npm run dev</code>.
+          <code>npm run dev</code>. Demo uses <code>base-url="/gis-api/v1"</code>
+          (Vite proxy) so localhost ports are not blocked by API CORS.
         </p>
       </details>
     </div>

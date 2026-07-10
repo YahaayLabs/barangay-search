@@ -12,6 +12,15 @@ export default defineConfig({
   ],
   server: {
     open: '/playground/index.html',
+    // Avoid CORS when Vite falls back to :5174 — playground calls same-origin proxy.
+    proxy: {
+      '/gis-api': {
+        target: 'https://api.gis.ph',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/gis-api/, ''),
+        secure: true,
+      },
+    },
   },
   build: {
     lib: {

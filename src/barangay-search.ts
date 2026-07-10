@@ -45,6 +45,7 @@ export class BarangaySearchElement extends HTMLElement {
     return [
       'api-key',
       'access-token',
+      'base-url',
       'placeholder',
       'disabled',
       'province',
@@ -136,6 +137,14 @@ export class BarangaySearchElement extends HTMLElement {
   }
   set accessToken(v: string) {
     this.#setOrRemove('access-token', v)
+  }
+
+  /** Override API base (default https://api.gis.ph/v1). Use e.g. `/gis-api/v1` with a Vite proxy. */
+  get baseUrl(): string {
+    return this.getAttribute('base-url') || ''
+  }
+  set baseUrl(v: string) {
+    this.#setOrRemove('base-url', v)
   }
 
   get placeholder(): string {
@@ -394,8 +403,14 @@ export class BarangaySearchElement extends HTMLElement {
 
     try {
       const token = this.accessToken || this.apiKey
-      // Bearer only — X-API-Key is blocked by api.gis.ph browser CORS.
-      const client = new GisPh(token ? { accessToken: token } : {})
+      if (!token) {
+        throw new Error('Missing API key. Set api-key on <barangay-search> or Dev settings.')
+      }
+      // Bearer only — avoid X-API-Key (not always allowed by browser CORS).
+      const client = new GisPh({
+        accessToken: token,
+        ...(this.baseUrl ? { baseUrl: this.baseUrl } : {}),
+      })
       const { data } = await client.barangays.search({ q: trimmed })
 
       if (seq !== this.#searchSeq || this.#isCommitted) return
@@ -409,7 +424,7 @@ export class BarangaySearchElement extends HTMLElement {
       const raw = err instanceof Error ? err.message : 'Failed to fetch barangays'
       const message =
         raw === 'Failed to fetch'
-          ? 'Network/CORS error talking to api.gis.ph. Check your API key and console.'
+          ? 'Network/CORS error talking to api.gis.ph. If you are on localhost, use the Vite proxy (base-url="/gis-api/v1") or ensure the API allows your origin port. Also verify your API key.'
           : raw
       this.#error = message
       this.#results = []
