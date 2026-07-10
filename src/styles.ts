@@ -16,18 +16,19 @@ export const styles = /* css */ `
     sans-serif
   );
   box-sizing: border-box;
+  /* Defaults match gis.ph brand (see _docs/design/tokens.css) */
   --bs-border: var(--barangay-search-border, #e2e8f0);
   --bs-radius: var(--barangay-search-radius, 8px);
-  --bs-focus: var(--barangay-search-focus, #3b82f6);
-  --bs-focus-ring: var(--barangay-search-focus-ring, rgba(59, 130, 246, 0.15));
-  --bs-text: var(--barangay-search-text, #1e293b);
+  --bs-focus: var(--barangay-search-focus, #10b981);
+  --bs-focus-ring: var(--barangay-search-focus-ring, rgba(16, 185, 129, 0.15));
+  --bs-text: var(--barangay-search-text, #0f172a);
   --bs-muted: var(--barangay-search-muted, #64748b);
   --bs-bg: var(--barangay-search-bg, #fff);
   --bs-hover: var(--barangay-search-hover, #f1f5f9);
-  --bs-selected-bg: var(--barangay-search-selected-bg, #f0fdf4);
-  --bs-selected-border: var(--barangay-search-selected-border, #86efac);
-  --bs-error: var(--barangay-search-error, #ef4444);
-  --bs-check: var(--barangay-search-check, #16a34a);
+  --bs-selected-bg: var(--barangay-search-selected-bg, #ecfdf5);
+  --bs-selected-border: var(--barangay-search-selected-border, #a7f3d0);
+  --bs-error: var(--barangay-search-error, #dc2626);
+  --bs-check: var(--barangay-search-check, #059669);
 }
 
 :host([disabled]) {

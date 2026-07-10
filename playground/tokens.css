@@ -1,0 +1,363 @@
+/**
+ * GIS.ph design tokens — cluster source of truth
+ * Extracted from gis.ph marketing site (app.vue brand greens + UI neutrals).
+ *
+ * Usage in demos / packages:
+ *   @import or <link> this file, then map to package-specific vars if needed.
+ *
+ * Brand greens (authoritative):
+ *   --gis-primary:       #10b981  (emerald-500)
+ *   --gis-primary-strong:#059669  (emerald-600)
+ */
+
+:root {
+  /* Brand */
+  --gis-primary: #10b981;
+  --gis-primary-strong: #059669;
+  --gis-primary-soft: #ecfdf5;
+  --gis-primary-border: #a7f3d0;
+  --gis-primary-text: #065f46;
+  --gis-primary-ring: rgba(16, 185, 129, 0.15);
+
+  /* Surfaces */
+  --gis-bg-page: #f1f5f9;
+  --gis-bg-card: #ffffff;
+  --gis-bg-muted: #f8fafc;
+  --gis-bg-hover: #f1f5f9;
+  --gis-bg-code: #111827;
+
+  /* Text */
+  --gis-text: #0f172a;
+  --gis-text-secondary: #475569;
+  --gis-text-muted: #64748b;
+  --gis-text-faint: #94a3b8;
+  --gis-text-on-primary: #ffffff;
+
+  /* Borders */
+  --gis-border: #e2e8f0;
+  --gis-border-strong: #cbd5e1;
+
+  /* Feedback */
+  --gis-error: #dc2626;
+  --gis-error-soft: #fef2f2;
+  --gis-error-border: #fecaca;
+  --gis-success: #059669;
+  --gis-success-soft: #ecfdf5;
+  --gis-success-border: #a7f3d0;
+
+  /* Shape */
+  --gis-radius-sm: 6px;
+  --gis-radius: 8px;
+  --gis-radius-lg: 12px;
+  --gis-radius-xl: 16px;
+
+  /* Type */
+  --gis-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --gis-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --gis-text-xs: 0.75rem;
+  --gis-text-sm: 0.875rem;
+  --gis-text-base: 0.9rem;
+  --gis-text-lg: 1.35rem;
+  --gis-text-xl: 1.5rem;
+
+  /* Elevation */
+  --gis-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --gis-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 12px 32px rgba(15, 23, 42, 0.06);
+  --gis-shadow-dropdown: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+
+  /* Spacing (demo shell) */
+  --gis-demo-max-width: 28rem;
+  --gis-space-1: 0.25rem;
+  --gis-space-2: 0.5rem;
+  --gis-space-3: 0.75rem;
+  --gis-space-4: 1rem;
+  --gis-space-5: 1.25rem;
+  --gis-space-6: 1.5rem;
+
+  /* Icons (search widgets) */
+  --gis-icon-sm: 12px;
+  --gis-icon: 14px;
+  --gis-icon-lg: 16px;
+
+  /* Search widget aliases (vue / wc / laravel vanilla) */
+  --barangay-search-font: var(--gis-font);
+  --barangay-search-border: var(--gis-border);
+  --barangay-search-radius: var(--gis-radius);
+  --barangay-search-focus: var(--gis-primary);
+  --barangay-search-focus-ring: var(--gis-primary-ring);
+  --barangay-search-text: var(--gis-text);
+  --barangay-search-muted: var(--gis-text-muted);
+  --barangay-search-bg: var(--gis-bg-card);
+  --barangay-search-hover: var(--gis-bg-hover);
+  --barangay-search-selected-bg: var(--gis-primary-soft);
+  --barangay-search-selected-border: var(--gis-primary-border);
+  --barangay-search-error: var(--gis-error);
+  --barangay-search-check: var(--gis-primary-strong);
+}
+
+/* Shared demo page shell (checkout-style playgrounds) */
+.gis-demo {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: var(--gis-bg-page);
+  font-family: var(--gis-font);
+  color: var(--gis-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.gis-demo-page {
+  width: 100%;
+  max-width: var(--gis-demo-max-width);
+}
+
+.gis-demo-header {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.gis-demo-title {
+  margin: 0;
+  font-size: var(--gis-text-xl);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--gis-text);
+}
+
+.gis-demo-tagline {
+  margin: 0.35rem 0 0;
+  font-size: 0.85rem;
+  color: var(--gis-text-muted);
+}
+
+.gis-demo-repo {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--gis-primary-strong);
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.gis-demo-repo:hover {
+  text-decoration: underline;
+}
+
+.gis-demo-footer {
+  margin: 1rem 0 0;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--gis-text-faint);
+}
+
+.gis-demo-footer a {
+  color: var(--gis-text-muted);
+  text-decoration: none;
+}
+
+.gis-demo-footer a:hover {
+  color: var(--gis-primary-strong);
+  text-decoration: underline;
+}
+
+.gis-demo-card {
+  width: 100%;
+  background: var(--gis-bg-card);
+  border-radius: var(--gis-radius-xl);
+  border: 1px solid var(--gis-border);
+  box-shadow: var(--gis-shadow);
+  padding: 1.75rem 1.5rem 1.5rem;
+}
+
+.gis-demo-eyebrow {
+  margin: 0 0 0.25rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gis-primary-strong);
+}
+
+.gis-demo-card-title {
+  margin: 0;
+  font-size: var(--gis-text-lg);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.gis-demo-sub {
+  margin: 0.4rem 0 0;
+  font-size: 0.8rem;
+  color: var(--gis-text-muted);
+}
+
+.gis-demo-sub code {
+  font-family: var(--gis-font-mono);
+  font-size: 0.75rem;
+  background: var(--gis-bg-page);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  color: var(--gis-text-secondary);
+}
+
+.gis-demo-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.gis-demo-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.gis-demo-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.gis-demo-field > span {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--gis-text-secondary);
+}
+
+.gis-demo-field input,
+.gis-demo-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--gis-border);
+  border-radius: var(--gis-radius);
+  padding: 0.6rem 0.75rem;
+  font-size: var(--gis-text-base);
+  color: var(--gis-text);
+  background: var(--gis-bg-card);
+  font-family: inherit;
+}
+
+.gis-demo-field input:focus,
+.gis-demo-field textarea:focus {
+  outline: none;
+  border-color: var(--gis-primary);
+  box-shadow: 0 0 0 3px var(--gis-primary-ring);
+}
+
+.gis-demo-field-highlight {
+  min-height: 4.5rem;
+  padding: 0.75rem;
+  border: 1px dashed var(--gis-primary-border);
+  border-radius: var(--gis-radius-lg);
+  background: var(--gis-primary-soft);
+}
+
+.gis-demo-field-highlight > span {
+  color: var(--gis-primary-text);
+}
+
+.gis-demo-selection {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--gis-radius);
+  background: var(--gis-success-soft);
+  border: 1px solid var(--gis-success-border);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--gis-primary-text);
+  line-height: 1.35;
+}
+
+.gis-demo-selection-dot {
+  flex-shrink: 0;
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-top: 0.3rem;
+  border-radius: 999px;
+  background: var(--gis-primary);
+}
+
+.gis-demo-banner {
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--gis-radius);
+  font-size: 0.8rem;
+}
+
+.gis-demo-banner.error {
+  background: var(--gis-error-soft);
+  border: 1px solid var(--gis-error-border);
+  color: var(--gis-error);
+}
+
+.gis-demo-banner.ok {
+  background: var(--gis-success-soft);
+  border: 1px solid var(--gis-success-border);
+  color: var(--gis-primary-text);
+}
+
+.gis-demo-btn {
+  margin-top: 0.25rem;
+  width: 100%;
+  border: none;
+  border-radius: var(--gis-radius);
+  padding: 0.7rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gis-text-on-primary);
+  background: var(--gis-primary-strong);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.gis-demo-btn:hover {
+  background: #047857;
+}
+
+.gis-demo-dev {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--gis-bg-page);
+  font-size: 0.8rem;
+  color: var(--gis-text-muted);
+}
+
+.gis-demo-dev summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--gis-text-secondary);
+}
+
+.gis-demo-dev label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.75rem;
+}
+
+.gis-demo-dev input {
+  border: 1px solid var(--gis-border);
+  border-radius: var(--gis-radius);
+  padding: 0.5rem 0.65rem;
+  font-size: 0.85rem;
+  font-family: inherit;
+}
+
+.gis-demo-hint {
+  margin: 0.5rem 0 0;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: var(--gis-text-faint);
+}
+
+@media (max-width: 420px) {
+  .gis-demo-row-2 {
+    grid-template-columns: 1fr;
+  }
+}

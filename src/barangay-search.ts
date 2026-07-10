@@ -29,6 +29,23 @@ function contextFor(item: BarangayResult): string {
 }
 
 /**
+ * gis.ph-sdk builds requests with `new URL(baseUrl + path)`, which requires an absolute base.
+ * Resolve relative bases like `/gis-api/v1` against the current origin (Vite proxy demos).
+ */
+function resolveBaseUrl(baseUrl: string | undefined | null): string | undefined {
+  const raw = (baseUrl || '').trim()
+  if (!raw) return undefined
+  // Already absolute
+  if (/^https?:\/\//i.test(raw)) {
+    return raw.replace(/\/$/, '')
+  }
+  if (typeof window === 'undefined' || !window.location?.origin) {
+    throw new Error(`base-url must be absolute outside the browser (got "${raw}")`)
+  }
+  return new URL(raw, window.location.origin).href.replace(/\/$/, '')
+}
+
+/**
  * Framework-agnostic Philippine barangay autocomplete.
  *
  * @example
@@ -407,9 +424,10 @@ export class BarangaySearchElement extends HTMLElement {
         throw new Error('Missing API key. Set api-key on <barangay-search> or Dev settings.')
       }
       // Bearer only — avoid X-API-Key (not always allowed by browser CORS).
+      const baseUrl = resolveBaseUrl(this.baseUrl)
       const client = new GisPh({
         accessToken: token,
-        ...(this.baseUrl ? { baseUrl: this.baseUrl } : {}),
+        ...(baseUrl ? { baseUrl } : {}),
       })
       const { data } = await client.barangays.search({ q: trimmed })
 
