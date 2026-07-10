@@ -1,0 +1,59 @@
+{
+  "name": "barangay-search",
+  "version": "0.1.0",
+  "description": "Web component for Philippine barangay autocomplete — powered by the GIS.ph API",
+  "type": "module",
+  "license": "MIT",
+  "author": "Yahaay Labs <gerald@yahaay.com>",
+  "homepage": "https://gis.ph",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YahaayLabs/barangay-search.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YahaayLabs/barangay-search/issues"
+  },
+  "keywords": [
+    "web-components",
+    "custom-elements",
+    "barangay",
+    "philippines",
+    "autocomplete",
+    "address",
+    "lgu",
+    "psgc",
+    "gis",
+    "gis.ph",
+    "typescript"
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "main": "./dist/barangay-search.umd.cjs",
+  "module": "./dist/barangay-search.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/barangay-search.js",
+      "require": "./dist/barangay-search.umd.cjs"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "gis.ph-sdk": "^1.0.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "vite": "^6.0.0",
+    "vite-plugin-dts": "^4.5.4"
+  }
+}
